@@ -1,98 +1,41 @@
 # Credit Card Fraud Detection
 
-This repository contains a machine learning project focused on detecting fraudulent credit card transactions.
+Classifying fraudulent transactions on the ULB dataset. The interesting problem here isn't accuracy — it's what to do when 99.8% of your data is the negative class.
 
-The goal is to build and evaluate classical ML models on a highly imbalanced dataset, and to understand the trade-offs involved when detecting rare but important events such as fraud.
+## Problem
 
----
+The dataset has 284,807 transactions; 492 are fraud. A model that predicts "not fraud" on everything gets 99.8% accuracy and catches zero fraud cases. So accuracy is useless here. The real question is: at what threshold do you maximize recall without drowning the ops team in false positives?
 
 ## Dataset
 
-- **Credit Card Fraud Detection Dataset (ULB)**
-- Source: Kaggle  
-  https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
-
-The dataset is **not included** in this repository because it is large.
-
-**To run the project:**
-1. Download `creditcard.csv` from the link above  
-2. Create a `data/` folder  
-3. Place the file inside `data/creditcard.csv`
-
----
-
-## Project Structure
-
-```
-credit-card-fraud-detection/
-│
-├── credit-card-fraud-ml.ipynb
-├── credit-card-fraud.html
-├── README.md
-├── .gitignore
-│
-└── data/
-    └── README.md
-```
-
----
+[Credit Card Fraud Detection (ULB)](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) via Kaggle. Not included — download `creditcard.csv` and place it in `data/`.
 
 ## Approach
 
-The project follows a standard supervised learning pipeline:
-- Data loading and preprocessing
-- Train / validation / test split with stratification
-- Training multiple models
-- Evaluating performance using metrics suited for class imbalance
+- Stratified train/val/test split to preserve class ratios
+- Trained Logistic Regression, Decision Tree, and Random Forest
+- Evaluated on ROC-AUC, F1 (fraud class), recall, and balanced accuracy
+- Explored threshold tuning to shift the precision/recall tradeoff
 
-### Models used
-- Logistic Regression  
-- Decision Tree  
-- Random Forest  
+## Key findings
 
-### Evaluation metrics
-Because fraud cases are rare, accuracy alone is misleading.  
-The main metrics used are:
-- ROC-AUC
-- Recall (fraud class)
-- F1-score
-- Balanced accuracy
+- Random Forest outperforms the others at default threshold
+- Lowering the decision threshold significantly boosts recall at the cost of precision — the right choice depends on the business context
+- Ensemble methods handle imbalance better, but threshold tuning matters more than model choice
 
----
+Full analysis in `credit-card-fraud-ml.ipynb`. Rendered HTML version also included.
 
-## Results
-
-The experiments show that:
-- Class imbalance strongly affects model performance
-- Threshold choice has a large impact on recall
-- Ensemble models generally perform better than simpler ones
-
-Detailed results and plots are available in the notebook and in the HTML report.
-
----
-
-## How to run
+## Run it
 
 ```bash
 pip install numpy pandas scikit-learn matplotlib
 jupyter notebook credit-card-fraud-ml.ipynb
 ```
 
----
+## Stack
 
-## Tools
-
-- Python
-- NumPy
-- Pandas
-- scikit-learn
-- Matplotlib
-- Jupyter Notebook
+Python · pandas · NumPy · scikit-learn · Matplotlib · Jupyter
 
 ---
 
-## Author
-
-Oussama Elmir
-
-This project was developed for educational purposes.
+Oussama Elmir — [github.com/osamaPY](https://github.com/osamaPY)
