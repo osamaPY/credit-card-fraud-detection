@@ -1,6 +1,6 @@
 # Credit Card Fraud Detection
 
-Classifying fraudulent transactions on the ULB dataset. The interesting problem here isn't accuracy — it's what to do when 99.8% of your data is the negative class.
+Classifying fraudulent transactions on the ULB dataset. The interesting problem here isn't accuracy: it's what to do when 99.8% of your data is the negative class.
 
 ## Problem
 
@@ -8,7 +8,7 @@ The dataset has 284,807 transactions; 492 are fraud. A model that predicts "not 
 
 ## Dataset
 
-[Credit Card Fraud Detection (ULB)](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) via Kaggle. Not included — download `creditcard.csv` and place it in `data/`.
+[Credit Card Fraud Detection (ULB)](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) via Kaggle. Not included, download `creditcard.csv` and place it in `data/`.
 
 ## Approach
 
@@ -20,7 +20,7 @@ The dataset has 284,807 transactions; 492 are fraud. A model that predicts "not 
 ## Key findings
 
 - Random Forest outperforms the others at default threshold
-- Lowering the decision threshold significantly boosts recall at the cost of precision — the right choice depends on the business context
+- Lowering the decision threshold significantly boosts recall at the cost of precision. The right choice depends on the business context
 - Ensemble methods handle imbalance better, but threshold tuning matters more than model choice
 
 Full analysis in `credit-card-fraud-ml.ipynb`. Rendered HTML version also included.
@@ -38,4 +38,4 @@ Python · pandas · NumPy · scikit-learn · Matplotlib · Jupyter
 
 ---
 
-Oussama Elmir — [github.com/osamaPY](https://github.com/osamaPY)
+Oussama Elmir · [github.com/osamaPY](https://github.com/osamaPY)
